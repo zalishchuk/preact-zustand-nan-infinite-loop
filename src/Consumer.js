@@ -9,15 +9,18 @@ function Consumer() {
     console.log('consumer rerender', Date.now());
   });
 
-  useEffect(() => {
-    updateState('age', 5);
+  function handleClick() {
+    updateState('age', NaN);
+  }
 
-    setTimeout(() => {
-      updateState('age', NaN);
-    }, 2500);
-  }, []);
-
-  return <h1>{age}</h1>;
+  return (
+    <div>
+      <h1>Age: {age}</h1>
+      <button type="button" onClick={handleClick}>
+        Set age to NaN
+      </button>
+    </div>
+  );
 }
 
 export default Consumer;
